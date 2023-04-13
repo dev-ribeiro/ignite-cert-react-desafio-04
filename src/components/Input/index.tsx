@@ -42,8 +42,6 @@ export function Input({ name, icon: Icon, ...rest }: Props) {
         });
     }, [fieldName, registerField]);
 
-    console.log("TEST ", isFilled)
-
     return (
         <Container isFilled={isFilled} isFocused={isFocused}>
             {Icon && <Icon size={20} />}
