@@ -4,8 +4,9 @@ import { FiEdit3, FiTrash } from 'react-icons/fi';
 import { Container } from './styles';
 import api from '../../services/api';
 import { useState } from 'react';
+import { AxiosResponse } from 'axios';
 
-type FoodType = {
+interface FoodType {
     id: string;
     name: string;
     image: string;
@@ -14,7 +15,7 @@ type FoodType = {
     available: boolean;
 }
 
-type Props = {
+interface Props {
     food: FoodType;
     handleDelete: (param: string) => void;
     handleEditFood: (param: FoodType) => void;
@@ -24,12 +25,12 @@ export function Food({ food, handleDelete, handleEditFood }: Props) {
     const [isAvailable, setIsAvailable] = useState<boolean>(food.available);
 
     const toggleAvailable = async () => {
-        await api.put(`/foods/${food.id}`, {
+        const response:AxiosResponse<FoodType> = await api.put(`/foods/${food.id}`, {
             ...food,
             available: !isAvailable,
         });
 
-        setIsAvailable(!isAvailable);
+        setIsAvailable(response.data.available);
     };
 
     const setEditingFood = () => {
