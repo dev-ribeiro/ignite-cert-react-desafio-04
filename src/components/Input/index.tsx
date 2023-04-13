@@ -14,7 +14,7 @@ import { Container } from './styles';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
     name: string;
-    icon: ComponentType<IconBaseProps>;
+    icon?: ComponentType<IconBaseProps>;
 }
 
 export function Input({ name, icon: Icon, ...rest }: Props) {

@@ -5,15 +5,7 @@ import { Container } from './styles';
 import api from '../../services/api';
 import { useState } from 'react';
 import { AxiosResponse } from 'axios';
-
-interface FoodType {
-    id: string;
-    name: string;
-    image: string;
-    description: string;
-    price: number;
-    available: boolean;
-}
+import { FoodType } from '../../@types/food';
 
 interface Props {
     food: FoodType;
